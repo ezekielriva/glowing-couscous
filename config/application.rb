@@ -28,6 +28,12 @@ class App
   def paths
     ['app']
   end
+
+  def init &block
+    klass = Class.new(Grape::API)
+    klass.instance_eval &block
+    klass
+  end
 end
 
 app = App.instance

@@ -1,2 +1,10 @@
 require './config/application.rb'
-run API::V1::ApplicationController
+
+app = App.instance
+
+api = app.init do
+  # Mount here each enpoint
+  mount API::V1::ApplicationController
+end
+
+run api
